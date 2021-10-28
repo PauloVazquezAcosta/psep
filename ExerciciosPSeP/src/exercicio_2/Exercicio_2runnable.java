@@ -2,14 +2,14 @@ package exercicio_2;
 
 import java.util.Scanner;
 
-public class Exercicio_2 extends Thread {
+public class Exercicio_2runnable implements Runnable {
 	// Creamos as variables que terá a secuencia
 	private static int cuad, x, m1, a, m2, b, z, y, c;
 	// Creamos a operación, cada fío terá a súa para o switch de run()
 	private int operacion;
 
 	// Introducimos a operación a facer cando creemos o fío de cada exercicio
-	public Exercicio_2(int operacion) {
+	public Exercicio_2runnable(int operacion) {
 		this.operacion = operacion;
 	}
 
@@ -26,10 +26,14 @@ public class Exercicio_2 extends Thread {
 		b = teclado.nextInt();
 		System.out.print("Introduce o valor de c: ");
 		c = teclado.nextInt();
+		
+		// Creo un obxecto de cada fío
+		Exercicio_2runnable o1 = new Exercicio_2runnable(1);
+		Exercicio_2runnable o2 = new Exercicio_2runnable(2);
 
-		// Creamos os dous fíos do exercicio 2 do PDF
-		Exercicio_2 f1 = new Exercicio_2(1);
-		Exercicio_2 f2 = new Exercicio_2(2);
+		// Asocio cada operación ao fío
+		Thread f1 = new Thread(o1);
+		Thread f2 = new Thread(o2);
 
 		// Iniciamos os fíos
 		f1.start();
@@ -52,10 +56,11 @@ public class Exercicio_2 extends Thread {
 		System.out.println("y vale: " + y);
 
 		System.out.println("O programa terminou");
+
 	}
 
-	public void run() { // o método start() executa directamente o run()
-
+	@Override
+	public void run() {
 		switch (operacion) {
 		case 1: // Operacións do fío 1
 			cuad = x * x;
@@ -68,6 +73,6 @@ public class Exercicio_2 extends Thread {
 			System.out.println("m2 vale: " + m2);
 			break;
 		}
-	}
 
+	}
 }

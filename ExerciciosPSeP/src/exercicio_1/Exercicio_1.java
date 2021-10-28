@@ -26,17 +26,17 @@ public class Exercicio_1 extends Thread {
 		b = teclado.nextInt();
 
 		// Creamos os dous fíos do exercicio 1 do PDF
-		Exercicio_1 h1 = new Exercicio_1(1);
-		Exercicio_1 h2 = new Exercicio_1(2);
+		Exercicio_1 f1 = new Exercicio_1(1);
+		Exercicio_1 f2 = new Exercicio_1(2);
 
 		// Iniciamos os fíos
-		h1.start();
-		h2.start();
+		f1.start();
+		f2.start();
 
 		// Esta parte fai que o main espere a que ambos fíos acaben e absorbe a excepción co try catch
 		try {
-			h1.join();
-			h2.join();
+			f1.join();
+			f2.join();
 		} catch (InterruptedException e) {
 		}
 		;
