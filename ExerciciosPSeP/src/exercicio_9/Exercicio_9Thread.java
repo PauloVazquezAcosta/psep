@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exercicio_8;
+package exercicio_9;
 
 import java.util.Scanner;
 
@@ -11,13 +11,12 @@ import java.util.Scanner;
  *
  * @author Paulo
  */
-public class Exercicio_8Thread extends Thread {
+public class Exercicio_9Thread extends Thread {
 
-    public static long a, x, y, b, c, d, e, f;
-
+    public static int a, x, y, b, c, d, e;
     public int operacion;
 
-    public Exercicio_8Thread(int operacion) {
+    public Exercicio_9Thread(int operacion) {
         this.operacion = operacion;
     }
 
@@ -25,17 +24,15 @@ public class Exercicio_8Thread extends Thread {
         Scanner teclado = new Scanner(System.in);
 
         System.out.print("Introduce o valor de x: ");
-        x = teclado.nextLong();
+        x = teclado.nextInt();
         System.out.print("Introduce o valor de y: ");
-        y = teclado.nextLong();
+        y = teclado.nextInt();
 
-        Exercicio_8Thread f1 = new Exercicio_8Thread(1);
-        Exercicio_8Thread f2 = new Exercicio_8Thread(2);
+        Exercicio_9Thread f1 = new Exercicio_9Thread(1);
+        Exercicio_9Thread f2 = new Exercicio_9Thread(2);
 
         f1.start();
         f2.start();
-        c = x * y;
-        System.out.println("c vale: " + c);
 
         try {
             f1.join();
@@ -43,38 +40,28 @@ public class Exercicio_8Thread extends Thread {
         } catch (InterruptedException e) {
         }
 
-        Exercicio_8Thread f4 = new Exercicio_8Thread(4);
-
-        f4.start();
-        e = a * b * c;
+        e = b + d;
         System.out.println("e vale: " + e);
-
-        try {
-            f4.join();
-        } catch (InterruptedException e) {
-        }
-
-        f = d - e;
-        System.out.println("f vale: " + f);
-
+        
         System.out.println("O programa terminou");
-    }
 
-    public void run() {
-        switch (operacion) {
+    }
+    
+    @Override
+    public void run(){
+        switch(operacion){
             case 1:
                 a = x + y;
                 System.out.println("a vale: " + a);
-                break;
-            case 2:
-                b = x - y;
+                b = a + 3;
                 System.out.println("b vale: " + b);
                 break;
-            case 4:
-                d = a + b + c;
+            case 2:
+                c = x * y;
+                System.out.println("c vale: " + c);
+                d = c + 8;
                 System.out.println("d vale: " + d);
                 break;
         }
     }
-
 }

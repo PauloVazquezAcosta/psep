@@ -11,13 +11,13 @@ import java.util.Scanner;
  *
  * @author Paulo
  */
-public class Exercicio_8Thread extends Thread {
+public class Exercicio_8Runnable implements Runnable {
 
     public static long a, x, y, b, c, d, e, f;
 
     public int operacion;
 
-    public Exercicio_8Thread(int operacion) {
+    public Exercicio_8Runnable(int operacion) {
         this.operacion = operacion;
     }
 
@@ -29,8 +29,11 @@ public class Exercicio_8Thread extends Thread {
         System.out.print("Introduce o valor de y: ");
         y = teclado.nextLong();
 
-        Exercicio_8Thread f1 = new Exercicio_8Thread(1);
-        Exercicio_8Thread f2 = new Exercicio_8Thread(2);
+        Exercicio_8Runnable o1 = new Exercicio_8Runnable(1);
+        Exercicio_8Runnable o2 = new Exercicio_8Runnable(2);
+
+        Thread f1 = new Thread(o1);
+        Thread f2 = new Thread(o2);
 
         f1.start();
         f2.start();
@@ -43,7 +46,8 @@ public class Exercicio_8Thread extends Thread {
         } catch (InterruptedException e) {
         }
 
-        Exercicio_8Thread f4 = new Exercicio_8Thread(4);
+        Exercicio_8Runnable o4 = new Exercicio_8Runnable(4);
+        Thread f4 = new Thread(o4);
 
         f4.start();
         e = a * b * c;
@@ -58,8 +62,10 @@ public class Exercicio_8Thread extends Thread {
         System.out.println("f vale: " + f);
 
         System.out.println("O programa terminou");
+
     }
 
+    @Override
     public void run() {
         switch (operacion) {
             case 1:
