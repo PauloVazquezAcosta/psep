@@ -11,12 +11,12 @@ import java.util.Scanner;
  *
  * @author Paulo
  */
-public class Exercicio_10Runnable implements Runnable {
+public class Exercicio_10Thread extends Thread {
 
     public static double a, x, m, b, n, c, y, z;
     public int operacion;
 
-    public Exercicio_10Runnable(int operacion) {
+    public Exercicio_10Thread(int operacion) {
         this.operacion = operacion;
     }
 
@@ -31,11 +31,8 @@ public class Exercicio_10Runnable implements Runnable {
         System.out.print("Introduce o valor de c: ");
         c = teclado.nextDouble();
 
-        Exercicio_10Runnable o1 = new Exercicio_10Runnable(1);
-        Exercicio_10Runnable o2 = new Exercicio_10Runnable(2);
-
-        Thread f1 = new Thread(o1);
-        Thread f2 = new Thread(o2);
+        Exercicio_10Thread f1 = new Exercicio_10Thread(1);
+        Exercicio_10Thread f2 = new Exercicio_10Thread(2);
 
         f1.start();
         f2.start();
@@ -46,12 +43,9 @@ public class Exercicio_10Runnable implements Runnable {
         } catch (InterruptedException e) {
         }
         
-        Exercicio_10Runnable o3 = new Exercicio_10Runnable(3);
-        Exercicio_10Runnable o4 = new Exercicio_10Runnable(4);
-        
-        Thread f3 = new Thread(o3);
-        Thread f4 = new Thread(o4);
-        
+        Exercicio_10Thread f3 = new Exercicio_10Thread(3);
+        Exercicio_10Thread f4 = new Exercicio_10Thread(4);
+                
         f3.start();
         f4.start();
         
@@ -64,7 +58,6 @@ public class Exercicio_10Runnable implements Runnable {
 
     }
 
-    @Override
     public void run() {
         switch (operacion) {
             case 1:
