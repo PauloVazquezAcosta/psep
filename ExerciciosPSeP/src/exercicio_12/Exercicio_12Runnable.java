@@ -96,6 +96,7 @@ public class Exercicio_12Runnable implements Runnable {
             if (array[i] > valorMaximo) {
                 valorMaximo = array[i];
             }
+            if (valorMaximo == 100) break;
         }
 
         return valorMaximo;
@@ -106,6 +107,7 @@ public class Exercicio_12Runnable implements Runnable {
             if (array[i] < valorMinimo) {
                 valorMinimo = array[i];
             }
+            if (valorMinimo == 1) break;
         }
 
         return valorMinimo;
