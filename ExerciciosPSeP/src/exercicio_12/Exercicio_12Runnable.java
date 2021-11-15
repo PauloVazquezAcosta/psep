@@ -12,7 +12,7 @@ package exercicio_12;
 public class Exercicio_12Runnable implements Runnable {
 
     public static int[] numeros = new int[100];
-    public static long suma = 0;
+    public static short suma = 0;
     public static double produto = 1;
     public static int valorMaximo = Integer.MIN_VALUE;
     public static int valorMinimo = Integer.MAX_VALUE;
@@ -75,7 +75,7 @@ public class Exercicio_12Runnable implements Runnable {
         }
     }
 
-    public static long CalcularSuma(int[] array) {
+    public static short CalcularSuma(int[] array) {
         for (int i = 0; i < 100; i++) {
             suma += array[i];
         }
