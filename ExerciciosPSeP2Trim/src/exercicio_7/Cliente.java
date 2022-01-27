@@ -78,28 +78,9 @@ public class Cliente {
                     }
                 } while (operando2 == Integer.MIN_VALUE || (operacion == 4 && operando2 == 0));
 
-                switch (operacion) {
-                    case 1:
                         emisor.writeInt(operacion);
                         emisor.writeInt(operando1);
                         emisor.writeInt(operando2);
-                        break;
-                    case 2:
-                        emisor.writeInt(operacion);
-                        emisor.writeInt(operando1);
-                        emisor.writeInt(operando2);
-                        break;
-                    case 3:
-                        emisor.writeInt(operacion);
-                        emisor.writeInt(operando1);
-                        emisor.writeInt(operando2);
-                        break;
-                    case 4:
-                        emisor.writeInt(operacion);
-                        emisor.writeInt(operando1);
-                        emisor.writeInt(operando2);
-                        break;
-                }
                 
                 resultado = receptor.readUTF();
                 System.out.println(resultado);
